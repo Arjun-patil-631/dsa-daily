@@ -14,4 +14,3 @@ void sortColors(int* nums, int numsSize) {
         nums[i]=2;
 }
 
-}
