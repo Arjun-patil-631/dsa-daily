@@ -17,5 +17,35 @@ class Solution(object):
         for num in nums:
             xor=xor^num
         return xor
+
+#majority element in an array
+class Solution(object):
+    def majorityElement(self, nums):
+        n=len(nums)
+        el=0
+        cnt=0
+        for num in nums:
+            if cnt==0:
+                cnt=1
+                el=num
+            elif el==num:
+                cnt+=1
+            else:
+                cnt-=1
+        cnt1=nums.count(el)
+        if cnt1 > (n//2):
+            return el
+        return -1
+
+#check if array is sorted and rotated
+class Solution(object):
+    def check(self, nums):
+        count=0
+        n=len(nums)
+        for i in range(0, n):
+                if nums[i]>nums[(i+1)% n]:
+                    count+=1
+        return count<=1
+        
     
     
