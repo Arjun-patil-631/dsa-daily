@@ -47,5 +47,14 @@ class Solution(object):
                     count+=1
         return count<=1
         
+#rotate array to right by k steps
+class Solution(object):
+    def rotate(self, nums, k):
+        n = len(nums)
+        k=k%n
+        nums.reverse()
+        nums[:k]=reversed(nums[:k])
+        nums[k:]=reversed(nums[k:])
+
     
     
