@@ -57,4 +57,16 @@ class Solution(object):
         nums[k:]=reversed(nums[k:])
 
     
-    
+#08-7-2025
+#kadane's algorithm to find maximum subarray sum
+class Solution(object):
+    def maxSubArray(self, nums):
+        max, sum=nums[0],0
+        for num in nums:
+            sum+=num
+            if sum>max:
+                max=sum
+            if sum<0:
+                sum=0
+        return max
+        
