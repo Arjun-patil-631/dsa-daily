@@ -69,4 +69,15 @@ class Solution(object):
             if sum<0:
                 sum=0
         return max
+#2nd example of kadane's algorithm:
+#correct time to buy and sell stock to maximize profit
+class Solution(object):
+    def maxProfit(self, prices):
+        profit, min_price= 0, prices[0]
+        for price in prices:
+            if price<min_price:
+                min_price=price
+            if price-min_price>profit:
+                profit=price-min_price
+        return profit
         
