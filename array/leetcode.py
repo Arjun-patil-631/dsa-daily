@@ -81,3 +81,29 @@ class Solution(object):
                 profit=price-min_price
         return profit
         
+#09-05-2025
+#find the minimum in a rotated sorted array
+class Solution(object):
+    def findMin(self, nums):
+        low, high=0, len(nums)-1
+        while low<high:
+            mid=(high+low)//2
+            if nums[mid]>nums[high]:
+                low=mid+1
+            else: 
+                high=mid
+        return nums[low]
+#or simply return min(nums) but that would be O(n) time complexity, the above solution is O(log n) time complexity
+
+#finding peak element in an array
+class Solution(object):
+    def findPeakElement(self, nums):
+        low, high=0, len(nums)-1
+        while low<high:
+            mid=(low+high)//2
+            if nums[mid]>nums[mid+1]:
+                high=mid
+            else:
+                low=mid+1
+        return low      
+#or simply return max(nums) but that would be O(n) time complexity, the above solution is O(log n) time complexity
