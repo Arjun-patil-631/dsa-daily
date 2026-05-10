@@ -107,3 +107,4 @@ class Solution(object):
                 low=mid+1
         return low      
 #or simply return max(nums) but that would be O(n) time complexity, the above solution is O(log n) time complexity
+
