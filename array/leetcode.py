@@ -108,3 +108,35 @@ class Solution(object):
         return low      
 #or simply return max(nums) but that would be O(n) time complexity, the above solution is O(log n) time complexity
 
+#11-7-2025
+#search in a 2D matrix
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        rows=len(matrix)
+        cols=len(matrix[0])
+        left=0
+        right=rows*cols-1
+
+        while left<=right:
+            mid=(left+right)//2
+            r=mid//cols
+            c=mid%cols
+            value=matrix[r][c]
+            if value==target:
+                return True
+            elif value<target:
+                left=mid+1
+            else:
+                right=mid-1
+        return False
+    
+#rotate a 2D matrix by 90 degrees clockwise
+class Solution(object):
+    def rotate(self, matrix):
+        n=len(matrix)
+        for i in range(n):
+            for j in range(i+1, n):
+                matrix[i][j], matrix[j][i]=matrix[j][i], matrix[i][j]
+        for i in range(n):
+            matrix[i].reverse()
+        
