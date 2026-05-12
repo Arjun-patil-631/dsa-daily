@@ -139,4 +139,40 @@ class Solution(object):
                 matrix[i][j], matrix[j][i]=matrix[j][i], matrix[i][j]
         for i in range(n):
             matrix[i].reverse()
+    
+#12-05-2025
+#rearrange array such that negatives come after positives
+class Solution(object):
+    def rearrangeArray(self, nums):
+        ans=[0]*len(nums)
+
+        pos_ind=0
+        neg_ind=1
+        for num in nums:
+            if num>0:
+                ans[pos_ind]=num
+                pos_ind+=2
+                
+            else: 
+                ans[neg_ind]=num
+                neg_ind+=2
+            
+        return ans
+
+#greatest permutation of an array
+class Solution(object):
+    def nextPermutation(self, nums):
+        index=-1
+        for i in range(len(nums)-2, -1, -1):
+            if nums[i]<nums[i+1]:
+                index=i
+                break
+        if index== -1:
+            nums.reverse()
+            return
+        for i in range(len(nums)-1,index,-1):
+            if nums[i]>nums[index]:
+                nums[i], nums[index]=nums[index], nums[i]
+                break
+        nums[index+1:]=reversed(nums[index+1:])
         
