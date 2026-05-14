@@ -59,3 +59,8 @@ class Solution(object):
             m2[ord(t[i])]=i+1
         return True
         
+#reverse words in a string
+class Solution(object):
+    def reverseWords(self, s):
+        return " ".join(s.split()[::-1])
+        
