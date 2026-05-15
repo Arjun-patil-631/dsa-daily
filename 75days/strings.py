@@ -63,4 +63,33 @@ class Solution(object):
 class Solution(object):
     def reverseWords(self, s):
         return " ".join(s.split()[::-1])
-        
+
+#15-05-2025
+#anagram of a string
+class Solution(object):
+    def isAnagram(self, s, t):
+        if len(s)!=len(t):
+            return False
+        freq=[0]*26
+        for ch in s:
+            freq[ord(ch)-ord('a')]+=1
+        for ch in t:
+            freq[ord(ch)-ord('a')]-=1
+        for count in freq:
+            if count!=0:
+                return False
+        return True
+
+#maximum nesting depth of a parentheses string
+class Solution(object):
+    def maxDepth(self, s):
+        p=0
+        ans=0
+        for ch in s:
+            if ch=='(':
+                p+=1
+            elif ch==')':
+                p-=1
+            ans=max(ans, p)
+        return ans
+            
