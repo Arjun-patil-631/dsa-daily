@@ -43,4 +43,25 @@ class Solution(object):
             curr = next_node        # move curr ahead
 
         return prev
+
+#recursive method to reverse a linked list        
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def reverseList(self, head):
+        # Base case
+        if not head or not head.next:
+            return head
+
+        # Reverse remaining list
+        new_head = self.reverseList(head.next)
+
+        # Reverse current connection
+        head.next.next = head
+        head.next = None
+
+        return new_head
         
