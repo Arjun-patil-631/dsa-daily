@@ -217,3 +217,26 @@ class Solution(object):
                 profit=price-min_price
         return profit
         
+#median of two sorted arrays
+class Solution(object):
+    def findMedianSortedArrays(self, nums1, nums2):
+        num=sorted(nums1+nums2)
+        l=len(num)
+        if l%2!=0:
+            return float(num[l//2])
+        else:
+            return float(num[l/2]+num[l/2-1])/2
+
+#if array is sorted then 2 sum
+class Solution(object):
+    def twoSum(self, numbers, target):
+        i,j=0,len(numbers)-1
+        while i<j:
+            sum=numbers[i]+numbers[j]
+            if sum==target:
+                return [i+1,j+1]
+            elif sum>target:
+                j-=1
+            else:
+                i+=1
+    
