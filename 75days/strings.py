@@ -142,3 +142,27 @@ class Solution(object):
             seen[s[right]]=right
             max_len=max(max_len, right-left+1)
         return max_len
+
+#20-05-2025
+#string compression
+class Solution(object):
+    def compress(self, chars):
+        s=[]
+        temp=chars[0]
+        count=0
+        for char in chars:
+            if char==temp:
+                count+=1
+            else:
+                s.append(temp)
+                if count>1:
+                    s.extend(str(count))
+                temp=char
+                count=1
+        s.append(temp)
+        if count>1:
+            s.extend(str(count))
+        chars[:len(s)]=s
+        return len(s)
+                
+            
