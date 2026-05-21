@@ -57,7 +57,7 @@ class Solution(object):
         nums[k:]=reversed(nums[k:])
 
     
-#08-7-2025
+#08-7-2026
 #kadane's algorithm to find maximum subarray sum
 class Solution(object):
     def maxSubArray(self, nums):
@@ -81,7 +81,7 @@ class Solution(object):
                 profit=price-min_price
         return profit
         
-#09-05-2025
+#09-05-2026
 #find the minimum in a rotated sorted array
 class Solution(object):
     def findMin(self, nums):
@@ -108,7 +108,7 @@ class Solution(object):
         return low      
 #or simply return max(nums) but that would be O(n) time complexity, the above solution is O(log n) time complexity
 
-#11-7-2025
+#11-7-2026
 #search in a 2D matrix
 class Solution(object):
     def searchMatrix(self, matrix, target):
@@ -140,7 +140,7 @@ class Solution(object):
         for i in range(n):
             matrix[i].reverse()
     
-#12-05-2025
+#12-05-2026
 #rearrange array such that negatives come after positives
 class Solution(object):
     def rearrangeArray(self, nums):
@@ -176,7 +176,7 @@ class Solution(object):
                 break
         nums[index+1:]=reversed(nums[index+1:])
 
-#13-05-2025
+#13-05-2026
 #find all unique triplets in the array which gives the sum of zero
 #3sum problem
 class Solution(object):
@@ -205,7 +205,7 @@ class Solution(object):
                     j+=1
         return res
     
-#14-05-2025
+#14-05-2026
 #best time to buy and sell stock to maximize profit
 class Solution(object):
     def maxProfit(self, prices):
@@ -240,3 +240,20 @@ class Solution(object):
             else:
                 i+=1
     
+#21-05-2026
+#reverse integer
+class Solution(object):
+    def reverse(self, x):
+        sign=-1 if x<0 else 1
+        x=abs(x)
+        rev=0
+        while x!=0:
+            d=x%10
+            rev=rev*10 + d
+            x=x//10
+        rev=sign*rev
+        if rev<-2**31 or rev>2**31-1:
+            return 0
+        return rev
+
+        
