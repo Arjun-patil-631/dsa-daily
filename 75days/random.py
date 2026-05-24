@@ -65,3 +65,45 @@ class Solution(object):
 
         return new_head
         
+#is valid parentheses
+class Solution(object):
+    def isValid(self, s):
+        oA, oB, oC=0,0,0
+        for ch in s:
+            if ch=="(":
+                oA+=1
+            if ch=="{":
+                oB+=1
+            if ch=="[":
+                oC+=1
+            elif ch=="]":
+                oC-=1
+            elif ch==")":
+                oA-=1
+            elif ch=="}":
+                oB-=1
+        if oA==0 and oB==0 and oC==0:
+            return True
+        else:
+            return False
+#but it will fail for cases like "([)]" where the order of closing brackets is wrong.
+
+#efficient method using stack
+class Solution(object):
+    def isValid(self, s):
+        stack=[]
+        for ch in s:
+            if ch in "([{":
+                stack.append(ch)
+            else:
+                if not stack: 
+                    return False
+                top=stack.pop()
+                if ch==")" and top!="(":
+                    return False
+                if ch=="]" and top!="[":
+                    return False
+                if ch=="}" and top!="{":
+                    return False
+        return len(stack)==0
+        
