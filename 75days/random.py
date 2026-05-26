@@ -106,6 +106,3 @@ class Solution(object):
                 if ch=="}" and top!="{":
                     return False
         return len(stack)==0
-        
-
-        ###########33
