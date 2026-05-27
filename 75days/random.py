@@ -106,3 +106,24 @@ class Solution(object):
                 if ch=="}" and top!="{":
                     return False
         return len(stack)==0
+
+#27-05-2026
+#number of speacial characcters II
+class Solution:
+    def numberOfSpecialChars(self, word: str) -> int:
+        low={}
+        upp={}
+
+        for i, ch in enumerate(word):
+            if ch.islower():
+                low[ch]=i
+            else:
+                lower=ch.lower()
+                if lower not in upp:
+                    upp[lower]=i
+        count=0
+        for ch in low:
+            if ch in upp:
+                if low[ch]<upp[ch]:
+                    count+=1
+        return count
