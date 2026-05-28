@@ -54,12 +54,12 @@ public:
 //23-05-2026
 //add 2 numbers represented as linked lists
 /**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     struct ListNode *next;
- * };
- */
+ * Definition for singly-linked list*/.
+ struct ListNode {
+      int val;
+     struct ListNode *next;
+ };
+
 struct ListNode* createNode(int val){
     struct ListNode* newNode=(struct ListNode*)malloc(sizeof(struct ListNode));
     newNode->val=val;
