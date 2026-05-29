@@ -143,3 +143,14 @@ class Solution(object):
                 else:
                     ans=max(ans, i-stack[-1])
         return ans
+
+#29-05-2026
+#min element after replacing with sum of digits
+class Solution(object):
+    def minElement(self, nums):
+        for i in range(len(nums)):
+            sum=0
+            for n in str(nums[i]):
+                sum+=int(n)
+            nums[i]=sum
+        return min(nums)
