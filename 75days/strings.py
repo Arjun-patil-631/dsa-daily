@@ -182,5 +182,29 @@ class Solution(object):
             right-=1
         return True
 
-#
+#29-05-2026
+#index of first occurrence in a string
+#my method using slicing
+class Solution(object):
+    def strStr(self, haystack, needle):
+        i,leng=0,len(needle)
+        for i in range(len(haystack)-leng+1):
+            if haystack[i:i+leng]==needle:
+                return i
+        return -1
+#using inbuilt function good for time complexity 
+class Solution(object):
+    def strStr(self, haystack, needle):
+        return haystack.find(needle)
+#giives same time complexity as above but similar to my method
+class Solution(object):
+    def strStr(self, haystack, needle):
+        n = len(haystack)
+        m = len(needle)
+        for i in range(n - m + 1):
+            if haystack[i:i +  m] == needle:
+                return i
+        return -1
+
+
             
