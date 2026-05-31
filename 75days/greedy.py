@@ -19,3 +19,16 @@ class Solution(object):
                 return False
             maxi=max(maxi, i+nums[i])
         return True
+
+#31-05-2026
+#LC122
+#Best Time to Buy and Sell Stock II
+class Solution(object):
+    def maxProfit(self, prices):
+        profit = 0
+
+        for i in range(1, len(prices)):
+            if prices[i] > prices[i-1]:
+                profit += prices[i] - prices[i-1]
+        return profit
+        
