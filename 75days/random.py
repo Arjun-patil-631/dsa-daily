@@ -154,3 +154,30 @@ class Solution(object):
                 sum+=int(n)
             nums[i]=sum
         return min(nums)
+
+#1-6-2026
+#69-sqrt without inbuilt functions
+class Solution(object):
+    def mySqrt(self, x):
+        left,right=0,x
+        ans=0
+        while left<=right:
+            mid=(left+right)//2
+            if mid*mid<=x:
+                ans=mid
+                left=mid+1
+            else:
+                right=mid-1
+        return ans
+
+#delete a node in a linked list
+# Definition for singly-linked list.
+# class ListNode(object):   
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def deleteNode(self, node):
+        node.val=node.next.val
+        node.next=node.next.next
+
