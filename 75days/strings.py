@@ -223,4 +223,17 @@ class Solution(object):
                 ans.append(symbols[i])
                 num-=values[i]
         return "".join(ans)
+
+#05-06-2026
+#removing stars from a string
+class Solution(object):
+    def removeStars(self, s):
+        stack=[]
+        for ch in s:
+            if ch=='*':
+                stack.pop()
+            else:
+                stack.append(ch)
+        return "".join(stack)
+            
             
