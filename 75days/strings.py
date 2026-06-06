@@ -235,5 +235,24 @@ class Solution(object):
             else:
                 stack.append(ch)
         return "".join(stack)
-            
+
+#06-06-2026
+#length of last word in a string
+class Solution(object):
+    def lengthOfLastWord(self, s):
+        words=s.split()
+        if not words:
+            return 0
+        return len(words[-1])
+#for interview purpose without using split
+class Solution(object):
+    def lengthOfLastWord(self, s):
+        length=0
+        i=len(s)-1
+        while i>=0 and s[i]==" ":
+            i-=1
+        while i>=0 and s[i]!=" ":
+            length+=1
+            i-=1
+        return length
             
