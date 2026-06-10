@@ -196,4 +196,17 @@ class Solution(object):
             p1=p1.next if p1 else headB
             p2=p2.next if p2 else headA
         return p1
-        
+
+#10-06-2026
+#number of steps to reduce a number to zero
+class Solution(object):
+    def numberOfSteps(self, num):
+        count=0
+        while num!=0:
+            if num%2==0:
+                num=num/2
+            else: 
+                num=num-1
+            count+=1
+        return count
+               
