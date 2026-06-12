@@ -36,3 +36,29 @@ class Solution(object):
             result.append(node.val)
         postorder(root)
         return result
+
+#12-06-2026
+#min stack
+class MinStack(object):
+
+    def __init__(self):
+        self.stack=[]
+        self.minstack=[]
+
+    def push(self, value):
+        self.stack.append(value)
+        if not self.minstack:
+            self.minstack.append(value)
+        else:
+            self.minstack.append(min(value, self.minstack[-1]))
+
+    def pop(self):
+        self.stack.pop()
+        self.minstack.pop()
+        
+
+    def top(self):
+        return self.stack[-1]
+
+    def getMin(self):
+        return self.minstack[-1]
