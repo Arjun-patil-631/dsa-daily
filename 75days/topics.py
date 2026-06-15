@@ -95,3 +95,34 @@ class Solution(object):
         new_tail.next=None
 
         return new_head
+
+#15-06-2026
+#linked list
+#delete the middle node of a linked list
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def deleteMiddle(self, head):
+        if not head or not head.next:
+            return None
+        temp=head
+        n=0
+        while temp:
+            n+=1
+            temp=temp.next
+        
+        mid=n//2
+
+        temp=head
+        for _ in range(mid-1):
+            temp=temp.next
+
+        temp.next=temp.next.next
+        return head
+#time complexity O(n)
+#84 ms
+
+#other approach
