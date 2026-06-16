@@ -125,4 +125,29 @@ class Solution(object):
 #time complexity O(n)
 #84 ms
 
-#other approach
+#other approach #use this (preffered) better approach
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def deleteMiddle(self, head):
+         # If there's only one node
+        if not head or not head.next:
+            return None
+
+        slow = head
+        fast = head
+        prev = None
+
+        while fast and fast.next:
+            prev = slow
+            slow = slow.next
+            fast = fast.next.next
+        prev.next = slow.next
+
+        return head
+#this method is known as the "tortoise and hare" approach,
+# where the slow pointer moves one step at a time and the fast pointer 
+#moves two steps at a time. 
