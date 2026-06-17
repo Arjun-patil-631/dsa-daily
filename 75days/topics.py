@@ -151,3 +151,64 @@ class Solution(object):
 #this method is known as the "tortoise and hare" approach,
 # where the slow pointer moves one step at a time and the fast pointer 
 #moves two steps at a time. 
+
+#daily challenge
+#16-06-2026
+#process string with special operations -1
+class Solution(object):
+    def processStr(self, s):
+        result=[]
+        for ch in s:
+            if ch=="*":
+                if result:
+                    result.pop()
+            elif ch=="#":
+                result+=result
+            elif ch=="%":
+                result=result[::-1]
+            elif ch>="a" and ch<="z":
+                result.append(ch)
+        return "".join(result)
+
+#daily challenge
+#17-06-2026
+#process string with special operations -2
+class Solution(object):
+    def processStr(self, s, k):
+        length = 0
+
+        # Calculate final length
+        for ch in s:
+            if ch == '*':
+                length = max(0, length - 1)
+            elif ch == '#':
+                length *= 2
+            elif ch == '%':
+                pass
+            else:
+                length += 1
+
+        if k >= length:
+            return '.'
+
+        # Reverse simulation
+        for i in range(len(s) - 1, -1, -1):
+            ch = s[i]
+
+            if ch == '*':
+                length += 1
+
+            elif ch == '#':
+                length //= 2
+                if k >= length:
+                    k -= length
+
+            elif ch == '%':
+                k = length - 1 - k
+
+            else:  # letter
+                length -= 1
+                if k == length:
+                    return ch
+
+        return '.'
