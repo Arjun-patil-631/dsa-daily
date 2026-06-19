@@ -223,3 +223,19 @@ class Solution(object):
                 matrix[i][j], matrix[j][i]=matrix[j][i], matrix[i][j]
         for i in range(n):
             matrix[i].reverse()
+
+#19-06-2026
+#container with most water
+class Solution(object):
+    def maxArea(self, height):
+        i=0
+        j=len(height)-1
+        maxi=0
+        while i<j:
+            area=min(height[i], height[j])*(j-i)
+            maxi=max(maxi, area)
+            if height[i]<height[j]:
+                i+=1
+            else:
+                j-=1
+        return maxi
