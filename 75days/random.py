@@ -209,4 +209,36 @@ class Solution(object):
                 num=num-1
             count+=1
         return count
+
+#21-06-2026
+#find the min in a rotated sorted array I
+class Solution(object):
+    def findMin(self, nums):
+        low, high=0, len(nums)-1
+        while low<high:
+            mid=(high+low)//2
+            if nums[mid]>nums[high]:
+                low=mid+1
+            else:
+                high=mid
+        return nums[low]
+    
+
+#find the min in a rotated sorted array II
+"""in this case we can have duplicates in the array 
+   so we will have to check for the case when mid and high are
+   same and we will have to reduce the high by 1 in that case """
+class Solution(object):
+    def findMin(self, nums):
+        low, high=0, len(nums)-1
+        while low<high:
+            mid=(high+low)//2
+            if nums[mid]>nums[high]:
+                low=mid+1
+            elif nums[mid]<nums[high]:
+                high=mid
+            else:
+                high-=1
+        return nums[low]
+
                
