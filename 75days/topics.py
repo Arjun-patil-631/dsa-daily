@@ -239,3 +239,39 @@ class Solution(object):
             else:
                 j-=1
         return maxi
+
+#daily problem
+#22-06-2026
+#max number of ballons
+# by using in-built counter function
+from collections import Counter
+class Solution(object):
+    def maxNumberOfBalloons(self, text):
+        c=Counter(text)
+        return min(
+            c['b'],
+            c['a'],
+            c['l']//2,
+            c['o']//2,
+            c['n']
+        )
+#time complexity O(n)  13ms on leetcode
+
+#without using counter function
+class Solution(object):
+    def maxNumberOfBalloons(self, text):
+        b=text.count("b")
+        a=text.count("a")
+        l=text.count("l")
+        o=text.count("o")
+        n=text.count("n")
+        count=0
+        while b>=1 and a>=1 and l>=2 and o>=2 and n>=1:
+            b-=1
+            a-=1
+            l-=2
+            o-=2
+            n-=1
+            count+=1
+        return count
+#time complexity O(n)  0 ms on leetcode
