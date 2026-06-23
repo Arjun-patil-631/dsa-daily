@@ -275,3 +275,29 @@ class Solution(object):
             count+=1
         return count
 #time complexity O(n)  0 ms on leetcode
+
+#23-06-2026
+#binary tree path
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution(object):
+    def binaryTreePaths(self, root):
+        ans=[]
+
+        def dfs(node, path):
+            if not node:
+                return 
+            path+=str(node.val)
+            if not node.right and not node.left:
+                ans.append(path)
+                return
+            path+="->"
+            dfs(node.left, path)
+            dfs(node.right, path)
+        dfs(root, "")
+        return ans
+        
