@@ -273,3 +273,14 @@ class Solution(object):
             if slow==fast:
                 return True
         return False
+
+#26-06-2026
+#plus 1
+class Solution(object):
+    def plusOne(self, digits):
+        num=0
+        for d in digits:
+            num=num*10+d
+        num+=1
+        return [int(ch) for ch in str(num)]
+        
