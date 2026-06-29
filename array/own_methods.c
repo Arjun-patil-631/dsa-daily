@@ -92,3 +92,15 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
     }
     return dummy.next;
 }
+
+/*
+#29-06-2026
+#no of strings that appers as substring in a given string*/
+int numOfStrings(char** patterns, int patternsSize, char* word) {
+    int count=0;
+    for(int i=0; i<patternsSize; i++){
+        if(strstr(word, patterns[i])!=NULL)
+            count++;
+    }
+    return count;
+}
