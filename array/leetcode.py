@@ -295,3 +295,14 @@ class Solution(object):
             arr[i]=min(arr[i], arr[i-1]+1)
         return arr[-1]
             
+#daily question
+#29-06-2026
+#no of strings that appers as substring in a given string
+class Solution(object):
+    def numOfStrings(self, patterns, word):
+        ans=0
+        for pattern in patterns:
+            if pattern in word:
+                ans+=1
+        return ans
+
