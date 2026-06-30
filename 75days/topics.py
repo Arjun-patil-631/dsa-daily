@@ -300,4 +300,26 @@ class Solution(object):
             dfs(node.right, path)
         dfs(root, "")
         return ans
-        
+
+#30-06-2026
+#happy number
+#a number is happy if it leads to 1 after a sequence of steps
+#where each step involves replacing the number by the sum of squares of its digits
+class Solution(object):
+    def getNext(self, n):
+        total = 0
+        while n > 0:
+            digit = n % 10
+            total += digit * digit
+            n //= 10
+        return total
+
+    def isHappy(self, n):
+        slow = n
+        fast = self.getNext(n)
+
+        while fast != 1 and slow != fast:
+            slow = self.getNext(slow)
+            fast = self.getNext(self.getNext(fast))
+
+        return fast == 1
