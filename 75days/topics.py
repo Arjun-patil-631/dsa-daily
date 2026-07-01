@@ -323,3 +323,7 @@ class Solution(object):
             fast = self.getNext(self.getNext(fast))
 
         return fast == 1
+
+
+        /
+        
