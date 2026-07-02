@@ -265,4 +265,26 @@ class Solution(object):
 
         return k
 
+#2-7-2026
+#excel sheet column title
+
+#iterative method( 14 ms  in leetcode)
+class Solution(object):
+    def convertToTitle(self, columnNumber):
+        ans = ""
+
+        while columnNumber:
+            columnNumber -= 1
+            ans = chr(columnNumber % 26 + ord('A')) + ans
+            columnNumber //= 26
+
+        return ans
                
+#recursive method( 0 ms  in leetcode)
+class Solution(object):
+    def convertToTitle(self, columnNumber):
+        if columnNumber == 0:
+            return ""
+
+        columnNumber -= 1
+        return self.convertToTitle(columnNumber // 26) + chr(columnNumber % 26 + ord('A'))  
