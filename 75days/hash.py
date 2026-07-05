@@ -24,7 +24,6 @@ class Solution(object):
 
 #5-07-2026
 #isomorphic strings
-
 class Solution(object):
     def isIsomorphic(self, s, t):
         m1, m2=[0] * 256, [0] * 256
@@ -35,3 +34,13 @@ class Solution(object):
             m1[ord(s[i])]=i+1
             m2[ord(t[i])]=i+1
         return True
+
+#contains duplicate
+class Solution(object):
+    def containsDuplicate(self, nums):
+        seen=set()
+        for num in nums:
+            if num in seen:
+                return True
+            seen.add(num)
+        return False
