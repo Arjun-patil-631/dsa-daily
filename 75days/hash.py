@@ -44,3 +44,20 @@ class Solution(object):
                 return True
             seen.add(num)
         return False
+
+#daily
+#6-07-2026
+#remove covered intervals
+class Solution(object):
+    def removeCoveredIntervals(self, intervals):
+        intervals.sort(key=lambda x: (x[0], -x[1]))
+
+        count = 0
+        max_end = 0
+
+        for start, end in intervals:
+            if end > max_end:
+                count += 1
+                max_end = end
+
+        return count
