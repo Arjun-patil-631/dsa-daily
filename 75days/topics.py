@@ -362,3 +362,22 @@ class Solution(object):
                 max_end = end
 
         return count
+
+#daily 
+#07-07-2026
+#Concatenate Non-Zero Digits and Multiply by Sum I
+class Solution(object):
+    def sumAndMultiply(self, n):
+        concat = 0
+        digit_sum = 0
+
+        if n == 0:
+            return 0
+
+        for ch in str(n):
+            digit = int(ch)
+            digit_sum += digit
+            if digit != 0:
+                concat = concat * 10 + digit
+
+        return concat * digit_sum
