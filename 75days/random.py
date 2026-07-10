@@ -308,3 +308,35 @@ class Solution(object):
 
         return head
                 
+#stack
+#9-07-2026
+#palindrome linked list
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def isPalindrome(self, head):
+        if head is None and head.next is None:
+            return  True
+        fast=slow=head
+        while  fast and fast.next:
+            slow=slow.next
+            fast=fast.next.next
+        
+        prev=None
+        while slow:
+            nxt=slow.next
+            slow.next=prev
+            prev=slow
+            slow=nxt
+        
+        first=head
+        second=prev
+        while second:
+            if first.val!=second.val:
+                return False
+            first=first.next
+            second=second.next
+        return True
