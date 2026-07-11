@@ -340,3 +340,22 @@ class Solution(object):
             first=first.next
             second=second.next
         return True
+
+#11-07-2026
+#pow(x, n)
+class Solution(object):
+    def myPow(self, x, n):
+        if n < 0:
+            x = 1 / x
+            n = -n
+
+        ans = 1
+
+        while n > 0:
+            if n % 2 == 1:
+                ans *= x
+
+            x *= x
+            n //= 2
+
+        return ans
