@@ -381,3 +381,4 @@ class Solution(object):
                 concat = concat * 10 + digit
 
         return concat * digit_sum
+
