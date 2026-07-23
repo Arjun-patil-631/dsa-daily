@@ -61,3 +61,31 @@ class Solution(object):
                 max_end = end
 
         return count
+
+#23-07-2026
+#contains duplicate 2
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+        s = set()
+
+        for i in range(len(nums)):
+            if nums[i] in s:
+                return True
+
+            s.add(nums[i])
+
+            if len(s) > k:
+                s.remove(nums[i - k])
+
+        return False
+    
+#above solution is not optimal as it uses set and remove operation takes O(n) time in worst case. 
+#below is optimal solution using dictionary which takes O(1) time for insert and lookup operation.
+class Solution(object):
+    def containsNearbyDuplicate(self, nums, k):
+        d = {}
+        for i in range(len(nums)):
+            if nums[i] in d and i - d[nums[i]] <= k:
+                return True
+            d[nums[i]] = i
+        return False
