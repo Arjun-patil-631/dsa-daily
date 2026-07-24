@@ -398,3 +398,26 @@ class Solution(object):
             else:
                 nums[mid], nums[high]=nums[high], nums[mid]
                 high-=1
+
+#24-07-2026
+#combination sum 
+class Solution(object):
+    def combinationSum(self, candidates, target):
+        res = []
+
+        def backtrack(start, target, path):
+            if target == 0:
+                res.append(path[:])
+                return
+
+            if target < 0:
+                return
+
+            for i in range(start, len(candidates)):
+                path.append(candidates[i])
+                backtrack(i, target - candidates[i], path)  # reuse same number
+                path.pop()
+
+        backtrack(0, target, [])
+        return res
+        
