@@ -420,4 +420,14 @@ class Solution(object):
 
         backtrack(0, target, [])
         return res
+
+#26-07-2026
+#The maximum sum of 3 digits in a array
+class Solution(object):
+    def maximumProduct(self, nums):
+        nums.sort()
+        return max(
+            nums[0]*nums[1]*nums[-1],
+            nums[-1]*nums[-2]*nums[-3]
+        )
         
