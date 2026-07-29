@@ -399,3 +399,9 @@ def merge(nums1, m, nums2, n):
         nums1[k] = nums2[j]
         j -= 1
         k -= 1
+
+#intersection of 2 arrrays
+class Solution(object):
+    def intersection(self, nums1, nums2):
+        result = list(set(nums1) & set(nums2))
+        return result
