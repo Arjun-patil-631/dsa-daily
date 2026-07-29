@@ -24,5 +24,33 @@ char* reverseVowels(char* s) {
 
 
   
+//29-07-2026
+#include<limits.h>
+int myAtoi(char* s) {
+    long result = 0;
+    int sign = 1;
+
+    while (*s == ' ')
+        s++;
+
+    if (*s == '+' || *s == '-') {
+        if (*s == '-')
+            sign = -1;
+        s++;
+    }
+
+    while (*s >= '0' && *s <= '9') {
+        result = result * 10 + (*s - '0');
+
+        if (sign * result > INT_MAX)
+            return INT_MAX;
+        if (sign * result < INT_MIN)
+            return INT_MIN;
+
+        s++;
+    }
+
+    return (int)(sign * result);
+}
  
 
