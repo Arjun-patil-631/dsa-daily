@@ -430,4 +430,3 @@ class Solution(object):
             nums[0]*nums[1]*nums[-1],
             nums[-1]*nums[-2]*nums[-3]
         )
-        
