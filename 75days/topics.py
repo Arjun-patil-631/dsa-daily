@@ -430,3 +430,18 @@ class Solution(object):
             nums[0]*nums[1]*nums[-1],
             nums[-1]*nums[-2]*nums[-3]
         )
+
+#30-07-2026
+#generate parenthesis
+class Solution(object):
+    def generateParenthesis(self, n):
+        ans=[]
+        def  backtrack(s, open, close):
+            if len(s)==2*n:
+                ans.append(s)
+                return
+            if open<n:
+                backtrack(s+"(",open+1, close)
+            if close<open:
+                backtrack(s+")",open, close+1)
+        backtrack("",0,0)
