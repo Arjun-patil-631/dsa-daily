@@ -328,3 +328,16 @@ class Solution(object):
             return root
 
         return build(0, len(nums) - 1)
+
+#04-08-2026
+class Solution(object):
+    def findMissingElements(self, nums):
+        s=set(nums)
+        ans=[]
+        m=max(nums)
+        l=min(nums)
+        for i in range(l,m):
+            if i not in s:
+                ans.append(i)
+        return ans
+        
