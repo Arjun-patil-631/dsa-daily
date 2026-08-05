@@ -146,3 +146,57 @@ int maxProduct(int n) {
 
     return first * second;
 }
+
+//05-08
+//combinations LC77
+int **ans;
+int *returnCols;
+int path[20];
+int pos, count;
+
+void backtrack(int start, int n, int k) {
+    if (pos == k) {
+        ans[count] = (int *)malloc(k * sizeof(int));
+        for (int i = 0; i < k; i++)
+            ans[count][i] = path[i];
+        returnCols[count] = k;
+        count++;
+        return;
+    }
+
+    for (int i = start; i <= n; i++) {
+        path[pos] = i;
+        pos++;
+        backtrack(i + 1, n, k);
+        pos--;
+    }
+}
+
+int combination(int n, int k) {
+    if (k > n - k)
+        k = n - k;
+
+    long long res = 1;
+    for (int i = 1; i <= k; i++)
+        res = res * (n - k + i) / i;
+
+    return (int)res;
+}
+
+int** combine(int n, int k, int* returnSize, int** returnColumnSizes) {
+
+    int total = combination(n, k);
+
+    ans = (int **)malloc(total * sizeof(int *));
+    returnCols = (int *)malloc(total * sizeof(int));
+
+    pos = 0;
+    count = 0;
+
+    backtrack(1, n, k);
+
+    *returnSize = count;
+    *returnColumnSizes = returnCols;
+
+    return ans;
+}
