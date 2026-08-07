@@ -200,3 +200,23 @@ int** combine(int n, int k, int* returnSize, int** returnColumnSizes) {
 
     return ans;
 }
+
+//07-08-2026
+//same tree
+
+bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
+    //if both are null
+    if(p==NULL && q==NULL)
+        return true;
+    
+    //if one is null other is not
+    if(p==NULL || q==NULL)
+        return false;
+    
+    //values are different
+    if(p->val != q->val)
+        return false;
+    
+    //check right and left subtree
+    return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+}
