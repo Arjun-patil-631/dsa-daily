@@ -17,3 +17,22 @@ class Solution {
         }
     }
 }
+
+
+//07-08
+//majority element : which occurs more than n/2 in an array
+//By boyer Moore algorithm
+class Solution {
+    public int majorityElement(int[] nums) {
+        int element=0, count=0;
+        for(int num: nums){
+            if(count==0)
+                element=num;
+            if(num==element)
+                count++;
+            else
+                count--;
+        }
+        return element;
+    }
+}
