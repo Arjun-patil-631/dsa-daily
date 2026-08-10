@@ -220,3 +220,24 @@ bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
     //check right and left subtree
     return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
 }
+
+//10-08-2026
+//array partiton
+int cmp(const void *a, const void *b)
+{
+    return (*(int *)a > *(int *)b) - (*(int *)a < *(int *)b);
+}
+
+int arrayPairSum(int* nums, int numsSize)
+{
+    qsort(nums, numsSize, sizeof(int), cmp);
+
+    int sum = 0;
+
+    for (int i = 0; i < numsSize; i += 2)
+    {
+        sum += nums[i];
+    }
+
+    return sum;
+}
