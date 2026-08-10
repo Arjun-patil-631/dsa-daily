@@ -32,3 +32,24 @@ class Solution(object):
                 profit += prices[i] - prices[i-1]
         return profit
         
+#10-08-2026
+#array partition
+class Solution(object):
+    def arrayPairSum(self, nums):
+        nums.sort()
+        ans=0
+        for i in range(0, len(nums), 2):
+            ans+=nums[i]
+        return ans
+#36 ms
+
+ #this problem can be made more optimal by : 
+class Solution(object):
+    def arrayPairSum(self, nums):
+
+        #sort the array
+        nums.sort()
+
+        #return the alternate digits such that we get min of every 2nd digits
+        return sum(nums[::2])
+#35 ms lol
