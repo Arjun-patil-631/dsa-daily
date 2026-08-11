@@ -340,4 +340,19 @@ class Solution(object):
             if i not in s:
                 ans.append(i)
         return ans
-        
+
+#11-08-2026
+# Smallest Missing Integer Greater Than Sequential Prefix Sum
+class Solution(object):
+    def missingInteger(self, nums):
+        total=nums[0]
+        for i in range(1, len(nums)):
+            if nums[i]==nums[i-1]+1:
+                total+=nums[i]
+            else: 
+                break
+        nums_set=set(nums)
+
+        while total in nums_set:
+            total+=1
+        return total
