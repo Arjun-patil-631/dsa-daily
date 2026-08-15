@@ -356,3 +356,20 @@ class Solution(object):
         while total in nums_set:
             total+=1
         return total
+
+#15-08-2026
+#Longest Subsequence With Non-Zero Bitwise XOR
+class Solution(object):
+    def longestSubsequence(self, nums):
+        xor=0
+        has_nonzero=False
+        for x in nums:
+            xor ^=x
+            if x!=0:
+                has_nonzero=True
+        if xor!=0:
+            return len(nums)
+        if has_nonzero:
+            return len(nums)-1
+        return 0
+        
