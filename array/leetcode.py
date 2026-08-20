@@ -372,4 +372,19 @@ class Solution(object):
         if has_nonzero:
             return len(nums)-1
         return 0
+
+#daily question 20-08-2026
+#Distribute Elements Into Two Arrays I  
+class Solution:
+    def resultArray(self, nums):
+        arr1 = [nums[0]]
+        arr2 = [nums[1]]
+
+        for i in range(2, len(nums)):
+            if arr1[-1] > arr2[-1]:
+                arr1.append(nums[i])
+            else:
+                arr2.append(nums[i])
+
+        return arr1 + arr2
         
