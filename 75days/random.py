@@ -405,3 +405,27 @@ class Solution(object):
     def intersection(self, nums1, nums2):
         result = list(set(nums1) & set(nums2))
         return result
+
+#23-08
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def mergeKLists(self, lists):
+        values=[]
+        for head in lists:
+            while head:
+                values.append(head.val)
+                head=head.next
+        values.sort()
+        dummy=ListNode(0)
+        curr=dummy
+        for val in values:
+            curr.next=ListNode(val)
+            curr=curr.next
+        return dummy.next
+
+        
+        
