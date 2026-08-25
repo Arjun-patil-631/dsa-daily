@@ -90,3 +90,9 @@ class Solution(object):
             d[nums[i]] = i
         return False
 
+#Smallest Missing Multiple of K
+class Solution(object):
+    def missingMultiple(self, nums, k):
+        for i in range(1, len(nums)+2):
+            if k*i not in nums:
+                return k*i
