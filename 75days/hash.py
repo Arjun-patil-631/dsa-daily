@@ -96,3 +96,22 @@ class Solution(object):
         for i in range(1, len(nums)+2):
             if k*i not in nums:
                 return k*i
+
+#longest Consecutive sequence
+class Solution(object):
+    def longestConsecutive(self, nums):
+        num_set=set(nums)
+        longest=0
+
+        for num in num_set:
+            #start only if this is first element
+            if num-1 not in num_set:
+                current =num
+                count=1
+                while current+1 in num_set:
+                    current+=1
+                    count+=1
+
+                longest=max(longest, count)
+        return longest
+        
