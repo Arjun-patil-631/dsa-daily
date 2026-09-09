@@ -423,3 +423,14 @@ int maxDepth(struct TreeNode* root) {
     return 1 + (left > right ? left : right);
 }
 
+//Daily
+//Count Commas in Range
+int max(int a, int b){
+    if(a>b){
+        return a;
+    }
+    else return b;
+}
+int countCommas(int n) {
+    return max(0, n-999);
+}
