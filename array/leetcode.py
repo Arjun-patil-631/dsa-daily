@@ -411,3 +411,10 @@ class Solution:
                 return i
 
         return -1
+
+#daily
+#Count Commas in Range
+class Solution:
+    def countCommas(self, n):
+        return max(0, n-999)
+    
