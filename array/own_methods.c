@@ -1,94 +1,108 @@
-//moving zeroes to the end of the array
-void moveZeroes(int* nums, int numsSize) {
-    int *i=nums, *j=nums+1;
-    while(j<nums+numsSize){
-        if(*i==0 && *j!=0){
-            *i=*j;
-            *j=0;
+// moving zeroes to the end of the array
+void moveZeroes(int *nums, int numsSize)
+{
+    int *i = nums, *j = nums + 1;
+    while (j < nums + numsSize)
+    {
+        if (*i == 0 && *j != 0)
+        {
+            *i = *j;
+            *j = 0;
         }
-        else if(*i==0 && *j==0){
+        else if (*i == 0 && *j == 0)
+        {
             j++;
         }
-        else {
+        else
+        {
             i++;
             j++;
         }
     }
 }
 
-//merging two sorted lists
-class Solution {
-public:
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+// merging two sorted lists
+class Solution{
+    public :
+        ListNode * mergeTwoLists(ListNode * list1, ListNode *list2){
 
-    struct ListNode dummy;
-    struct ListNode *temp = &dummy;
+                       struct ListNode dummy;
+struct ListNode *temp = &dummy;
 
-    dummy.next = NULL;
+dummy.next = NULL;
 
-    while(list1 != NULL && list2 != NULL) {
+while (list1 != NULL && list2 != NULL)
+{
 
-        if(list1->val <= list2->val) {
-            temp->next = list1;
-            list1 = list1->next;
-        }
-        else {
-            temp->next = list2;
-            list2 = list2->next;
-        }
-
-        temp = temp->next;
-    }
-
-    // attach remaining nodes
-    if(list1 != NULL)
+    if (list1->val <= list2->val)
+    {
         temp->next = list1;
-    else
-        temp->next = list2;
-
-    return dummy.next;
-        
+        list1 = list1->next;
     }
+    else
+    {
+        temp->next = list2;
+        list2 = list2->next;
+    }
+
+    temp = temp->next;
+}
+
+// attach remaining nodes
+if (list1 != NULL)
+    temp->next = list1;
+else
+    temp->next = list2;
+
+return dummy.next;
+}
+}
+;
+
+// 23-05-2026//
+// add 2 numbers represented as linked lists
+/**
+ * Definition for singly-linked list*/
+    .struct ListNode
+{
+    int val;
+    struct ListNode *next;
 };
 
-//23-05-2026//
-//add 2 numbers represented as linked lists
-/**
- * Definition for singly-linked list*/.
- struct ListNode {
-      int val;
-     struct ListNode *next;
- };
-
-struct ListNode* createNode(int val){
-    struct ListNode* newNode=(struct ListNode*)malloc(sizeof(struct ListNode));
-    newNode->val=val;
-    newNode->next=NULL;
+struct ListNode *createNode(int val)
+{
+    struct ListNode *newNode = (struct ListNode *)malloc(sizeof(struct ListNode));
+    newNode->val = val;
+    newNode->next = NULL;
     return newNode;
 }
 
-struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
+struct ListNode *addTwoNumbers(struct ListNode *l1, struct ListNode *l2)
+{
     struct ListNode dummy;
-    dummy.next=NULL;
+    dummy.next = NULL;
 
-    struct ListNode* temp= &dummy;
-    int carry=0;
+    struct ListNode *temp = &dummy;
+    int carry = 0;
 
-    while(l1!=NULL || l2!=NULL || carry!=0){
-        int sum=carry;
+    while (l1 != NULL || l2 != NULL || carry != 0)
+    {
+        int sum = carry;
 
-        if(l1!=NULL){
-            sum+=l1->val;
-            l1=l1->next;
+        if (l1 != NULL)
+        {
+            sum += l1->val;
+            l1 = l1->next;
         }
-        if(l2!=NULL){
-            sum+=l2->val;
-            l2=l2->next;
+        if (l2 != NULL)
+        {
+            sum += l2->val;
+            l2 = l2->next;
         }
-        carry=sum/10;
-        struct ListNode* newNode=createNode(sum%10);
-        temp->next=newNode;
-        temp=temp->next;
+        carry = sum / 10;
+        struct ListNode *newNode = createNode(sum % 10);
+        temp->next = newNode;
+        temp = temp->next;
     }
     return dummy.next;
 }
@@ -96,17 +110,19 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
 /*
 #29-06-2026
 #no of strings that appers as substring in a given string*/
-int numOfStrings(char** patterns, int patternsSize, char* word) {
-    int count=0;
-    for(int i=0; i<patternsSize; i++){
-        if(strstr(word, patterns[i])!=NULL)
+int numOfStrings(char **patterns, int patternsSize, char *word)
+{
+    int count = 0;
+    for (int i = 0; i < patternsSize; i++)
+    {
+        if (strstr(word, patterns[i]) != NULL)
             count++;
     }
     return count;
 }
 
-//17-07-2026
-//reverse a linked list
+// 17-07-2026
+// reverse a linked list
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -114,30 +130,37 @@ int numOfStrings(char** patterns, int patternsSize, char* word) {
  *     struct ListNode *next;
  * };
  */
-struct ListNode* reverseList(struct ListNode* head) {
-    struct ListNode* prev=NULL;
-    struct ListNode* curr=head;
-    struct ListNode* next=NULL;
-    while(curr!=NULL){
-        next=curr->next;
-        curr->next=prev;
-        prev=curr;
-        curr=next;
+struct ListNode *reverseList(struct ListNode *head)
+{
+    struct ListNode *prev = NULL;
+    struct ListNode *curr = head;
+    struct ListNode *next = NULL;
+    while (curr != NULL)
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
     }
     return prev;
 }
 
-//04-08-2026
-int maxProduct(int n) {
+// 04-08-2026
+int maxProduct(int n)
+{
     int first = 0, second = 0;
 
-    while (n > 0) {
+    while (n > 0)
+    {
         int digit = n % 10;
 
-        if (digit >= first) {
+        if (digit >= first)
+        {
             second = first;
             first = digit;
-        } else if (digit > second) {
+        }
+        else if (digit > second)
+        {
             second = digit;
         }
 
@@ -147,15 +170,17 @@ int maxProduct(int n) {
     return first * second;
 }
 
-//05-08
-//combinations LC77
+// 05-08
+// combinations LC77
 int **ans;
 int *returnCols;
 int path[20];
 int pos, count;
 
-void backtrack(int start, int n, int k) {
-    if (pos == k) {
+void backtrack(int start, int n, int k)
+{
+    if (pos == k)
+    {
         ans[count] = (int *)malloc(k * sizeof(int));
         for (int i = 0; i < k; i++)
             ans[count][i] = path[i];
@@ -164,7 +189,8 @@ void backtrack(int start, int n, int k) {
         return;
     }
 
-    for (int i = start; i <= n; i++) {
+    for (int i = start; i <= n; i++)
+    {
         path[pos] = i;
         pos++;
         backtrack(i + 1, n, k);
@@ -172,7 +198,8 @@ void backtrack(int start, int n, int k) {
     }
 }
 
-int combination(int n, int k) {
+int combination(int n, int k)
+{
     if (k > n - k)
         k = n - k;
 
@@ -183,7 +210,8 @@ int combination(int n, int k) {
     return (int)res;
 }
 
-int** combine(int n, int k, int* returnSize, int** returnColumnSizes) {
+int **combine(int n, int k, int *returnSize, int **returnColumnSizes)
+{
 
     int total = combination(n, k);
 
@@ -201,34 +229,35 @@ int** combine(int n, int k, int* returnSize, int** returnColumnSizes) {
     return ans;
 }
 
-//07-08-2026
-//same tree
+// 07-08-2026
+// same tree
 
-bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
-    //if both are null
-    if(p==NULL && q==NULL)
+bool isSameTree(struct TreeNode *p, struct TreeNode *q)
+{
+    // if both are null
+    if (p == NULL && q == NULL)
         return true;
-    
-    //if one is null other is not
-    if(p==NULL || q==NULL)
+
+    // if one is null other is not
+    if (p == NULL || q == NULL)
         return false;
-    
-    //values are different
-    if(p->val != q->val)
+
+    // values are different
+    if (p->val != q->val)
         return false;
-    
-    //check right and left subtree
+
+    // check right and left subtree
     return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
 }
 
-//10-08-2026
-//array partiton
+// 10-08-2026
+// array partiton
 int cmp(const void *a, const void *b)
 {
     return (*(int *)a > *(int *)b) - (*(int *)a < *(int *)b);
 }
 
-int arrayPairSum(int* nums, int numsSize)
+int arrayPairSum(int *nums, int numsSize)
 {
     qsort(nums, numsSize, sizeof(int), cmp);
 
@@ -242,12 +271,13 @@ int arrayPairSum(int* nums, int numsSize)
     return sum;
 }
 
-//20-08-2026
-//Distribute Elements Into Two Arrays I
+// 20-08-2026
+// Distribute Elements Into Two Arrays I
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
-int* resultArray(int* nums, int numsSize, int* returnSize) {
+int *resultArray(int *nums, int numsSize, int *returnSize)
+{
     int *arr1 = malloc(numsSize * sizeof(int));
     int *arr2 = malloc(numsSize * sizeof(int));
     int *ans = malloc(numsSize * sizeof(int));
@@ -257,21 +287,27 @@ int* resultArray(int* nums, int numsSize, int* returnSize) {
     arr1[n1++] = nums[0];
     arr2[n2++] = nums[1];
 
-    for (int i = 2; i < numsSize; i++) {
-        if (arr1[n1 - 1] > arr2[n2 - 1]) {
+    for (int i = 2; i < numsSize; i++)
+    {
+        if (arr1[n1 - 1] > arr2[n2 - 1])
+        {
             arr1[n1++] = nums[i];
-        } else {
+        }
+        else
+        {
             arr2[n2++] = nums[i];
         }
     }
 
     int k = 0;
 
-    for (int i = 0; i < n1; i++) {
+    for (int i = 0; i < n1; i++)
+    {
         ans[k++] = arr1[i];
     }
 
-    for (int i = 0; i < n2; i++) {
+    for (int i = 0; i < n2; i++)
+    {
         ans[k++] = arr2[i];
     }
 
@@ -282,13 +318,15 @@ int* resultArray(int* nums, int numsSize, int* returnSize) {
     return ans;
 }
 
-//Check Divisibility by Digit Sum and Product
-bool checkDivisibility(int n) {
+// Check Divisibility by Digit Sum and Product
+bool checkDivisibility(int n)
+{
     int original = n;
     int sum = 0;
     int product = 1;
 
-    while (n > 0) {
+    while (n > 0)
+    {
         int digit = n % 10;
 
         sum += digit;
@@ -300,8 +338,7 @@ bool checkDivisibility(int n) {
     return original % (sum + product) == 0;
 }
 
-
-//merge n sorted lists
+// merge n sorted lists
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -309,17 +346,22 @@ bool checkDivisibility(int n) {
  *     struct ListNode *next;
  * };
  */
-struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) {
+struct ListNode *mergeTwoLists(struct ListNode *l1, struct ListNode *l2)
+{
     struct ListNode dummy;
-    struct ListNode* curr = &dummy;
+    struct ListNode *curr = &dummy;
 
     dummy.next = NULL;
 
-    while (l1 && l2) {
-        if (l1->val <= l2->val) {
+    while (l1 && l2)
+    {
+        if (l1->val <= l2->val)
+        {
             curr->next = l1;
             l1 = l1->next;
-        } else {
+        }
+        else
+        {
             curr->next = l2;
             l2 = l2->next;
         }
@@ -335,17 +377,23 @@ struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) {
     return dummy.next;
 }
 
-struct ListNode* mergeKLists(struct ListNode** lists, int listsSize) {
+struct ListNode *mergeKLists(struct ListNode **lists, int listsSize)
+{
     if (listsSize == 0)
         return NULL;
 
-    while (listsSize > 1) {
+    while (listsSize > 1)
+    {
         int newSize = 0;
 
-        for (int i = 0; i < listsSize; i += 2) {
-            if (i + 1 < listsSize) {
+        for (int i = 0; i < listsSize; i += 2)
+        {
+            if (i + 1 < listsSize)
+            {
                 lists[newSize] = mergeTwoLists(lists[i], lists[i + 1]);
-            } else {
+            }
+            else
+            {
                 lists[newSize] = lists[i];
             }
 
@@ -358,18 +406,19 @@ struct ListNode* mergeKLists(struct ListNode** lists, int listsSize) {
     return lists[0];
 }
 
-26-08-2026
-//Remove Duplicates from Sorted List II
+26 - 08 - 2026
+    // Remove Duplicates from Sorted List II
 
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     struct ListNode *next;
- * };
- */
+    /**
+     * Definition for singly-linked list.
+     * struct ListNode {
+     *     int val;
+     *     struct ListNode *next;
+     * };
+     */
 
-struct ListNode* deleteDuplicates(struct ListNode* head) {
+    struct ListNode *deleteDuplicates(struct ListNode *head)
+{
 
     struct ListNode dummy;
     dummy.next = head;
@@ -377,21 +426,25 @@ struct ListNode* deleteDuplicates(struct ListNode* head) {
     struct ListNode *prev = &dummy;
     struct ListNode *curr = head;
 
-    while (curr != NULL) {
+    while (curr != NULL)
+    {
 
         // Check if current value is duplicated
-        if (curr->next != NULL && curr->val == curr->next->val) {
+        if (curr->next != NULL && curr->val == curr->next->val)
+        {
 
             int value = curr->val;
 
             // Skip all nodes having this value
-            while (curr != NULL && curr->val == value) {
+            while (curr != NULL && curr->val == value)
+            {
                 curr = curr->next;
             }
 
             prev->next = curr;
         }
-        else {
+        else
+        {
             // Current node is unique
             prev = curr;
             curr = curr->next;
@@ -401,8 +454,7 @@ struct ListNode* deleteDuplicates(struct ListNode* head) {
     return dummy.next;
 }
 
-
-//maximum depth of binary tree
+// maximum depth of binary tree
 
 /**
  * Definition for a binary tree node.
@@ -413,7 +465,8 @@ struct ListNode* deleteDuplicates(struct ListNode* head) {
  * };
  */
 
-int maxDepth(struct TreeNode* root) {
+int maxDepth(struct TreeNode *root)
+{
     if (root == NULL)
         return 0;
 
@@ -423,14 +476,33 @@ int maxDepth(struct TreeNode* root) {
     return 1 + (left > right ? left : right);
 }
 
-//Daily
-//Count Commas in Range
-int max(int a, int b){
-    if(a>b){
+// Daily
+// Count Commas in Range
+int max(int a, int b)
+{
+    if (a > b)
+    {
         return a;
     }
-    else return b;
+    else
+        return b;
 }
-int countCommas(int n) {
-    return max(0, n-999);
+int countCommas(int n)
+{
+    return max(0, n - 999);
+}
+
+// daily
+long long countCommas(long n)
+{
+    long ans = 0;
+    long x = 1000;
+
+    while (x <= n)
+    {
+        ans += n - x + 1;
+        x *= 1000;
+    }
+
+    return ans;
 }
