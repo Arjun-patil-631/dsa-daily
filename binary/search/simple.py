@@ -20,3 +20,24 @@ class Solution(object):
         actual_sum=sum(nums)
 
         return expected_sum-actual_sum
+
+#first bad version:
+
+# The isBadVersion API is already defined for you.
+# @param version, an integer
+# @return a bool
+# def isBadVersion(version):
+
+class Solution(object):
+    def firstBadVersion(self, n):
+        low=1
+        high=n
+        result=-1
+        while low<=high:
+            mid=low+(high-low)//2
+            if isBadVersion(mid):
+                result=mid
+                high=mid-1
+            else:
+                low=mid+1
+        return result
