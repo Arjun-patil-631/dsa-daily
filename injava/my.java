@@ -216,3 +216,26 @@ class Solution {
         return sum;
     }
 }
+
+
+//min add of parenthesis to make the String valid
+class Solution {
+    public int minAddToMakeValid(String s) {
+        int openBrackets=0;
+        int closedBrackets=0;
+        for(int i=0; i<s.length();i++){
+            if(s.charAt(i)=='('){
+                openBrackets++;
+            }
+            else{
+                if(openBrackets>0){
+                    openBrackets--;
+                }
+                else{
+                    closedBrackets++;
+                }
+            }
+        }
+        return openBrackets+closedBrackets;
+    }
+}
