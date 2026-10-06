@@ -490,3 +490,18 @@ class Solution:
 
         backtrack(0, [])
         return result
+
+#min add of parenthesis to make the String valid
+class Solution(object):
+    def minAddToMakeValid(self, s):
+        open_bracket=0
+        extra=0
+        for ch in s:
+            if ch=='(':
+                open_bracket+=1
+            else:
+                if open_bracket>0:
+                    open_bracket-=1
+                else:
+                    extra+=1
+        return open_bracket+extra
