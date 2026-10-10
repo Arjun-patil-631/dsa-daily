@@ -22,3 +22,34 @@ struct ListNode* swapPairs(struct ListNode* head) {
 //the above solution is only correct if the question is asked to modify the values in place
 
 //but if leetcode the question is aksed to change the nodes, so the exact solution will be:
+
+
+
+//delete node
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* removeElements(struct ListNode* head, int val) {
+    struct ListNode* previous=NULL;
+    struct ListNode* current=head;
+    while(current){
+        if(previous==NULL && current->val==val){
+            head=head->next;
+            current=head;
+        }
+        else if(current->val==val){
+            previous->next=current->next;
+            current=current->next;
+        }
+        else{
+            previous=current;
+            current=current->next;
+        }
+
+    }
+    return head; 
+}
