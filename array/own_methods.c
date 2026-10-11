@@ -506,3 +506,14 @@ long long countCommas(long n)
 
     return ans;
 }
+
+//sum of squares of special numbers
+int sumOfSquares(int* nums, int numsSize) {
+    int special=0;
+    for(int i=0; i<numsSize; i++){
+        if(numsSize%(i+1)==0){
+            special+=nums[i]*nums[i];
+        }
+    }
+    return special;
+}
