@@ -505,3 +505,21 @@ class Solution(object):
                 else:
                     extra+=1
         return open_bracket+extra
+
+#find MAX average
+class Solution(object):
+    def findMaxAverage(self, nums, k):
+        Sum = 0
+
+        for i in range(k):
+            Sum += nums[i]
+
+        max_sum = Sum
+
+        for i in range(k, len(nums)):
+            Sum = Sum - nums[i-k] + nums[i]
+
+            if Sum > max_sum:
+                max_sum = Sum
+
+        return max_sum / float(k)
