@@ -523,3 +523,33 @@ class Solution(object):
                 max_sum = Sum
 
         return max_sum / float(k)
+
+
+#max vowels in a substring of length k
+class Solution:
+    def maxVowels(self, s: str, k: int) -> int:
+
+        vowels = "aeiou"
+        count = 0
+
+        # Count vowels in first window
+        for i in range(k):
+            if s[i] in vowels:
+                count += 1
+
+        maximum = count
+
+        # Slide the window
+        for i in range(k, len(s)):
+
+            # Remove outgoing character
+            if s[i-k] in vowels:
+                count -= 1
+
+            # Add incoming character
+            if s[i] in vowels:
+                count += 1
+
+            maximum = max(maximum, count)
+
+        return maximum
