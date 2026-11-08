@@ -553,3 +553,31 @@ class Solution:
             maximum = max(maximum, count)
 
         return maximum
+
+#daily question
+#count servers that communicate
+class Solution:
+    def countServers(self, grid):
+        m = len(grid)
+        n = len(grid[0])
+
+        row = [0] * m
+        col = [0] * n
+
+        # Count servers in each row and column
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 1:
+                    row[i] += 1
+                    col[j] += 1
+
+        ans = 0
+
+        # Count communicating servers
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 1:
+                    if row[i] > 1 or col[j] > 1:
+                        ans += 1
+
+        return ans
