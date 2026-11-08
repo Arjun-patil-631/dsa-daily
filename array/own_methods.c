@@ -534,3 +534,42 @@ int minMoves(int* nums, int numsSize) {
 
     return (int)(sum - (long long)numsSize * min);
 }
+
+//count servers that communicate
+int countServers(int** grid, int gridSize, int* gridColSize) {
+    int m = gridSize;
+    int n = gridColSize[0];
+
+    int row[m];
+    int col[n];
+
+    for (int i = 0; i < m; i++)
+        row[i] = 0;
+
+    for (int j = 0; j < n; j++)
+        col[j] = 0;
+
+    // Count servers
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (grid[i][j] == 1) {
+                row[i]++;
+                col[j]++;
+            }
+        }
+    }
+
+    int ans = 0;
+
+    // Count communicating servers
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (grid[i][j] == 1 &&
+                (row[i] > 1 || col[j] > 1)) {
+                ans++;
+            }
+        }
+    }
+
+    return ans;
+}
