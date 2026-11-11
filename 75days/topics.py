@@ -581,3 +581,18 @@ class Solution:
                         ans += 1
 
         return ans
+
+#minimum cost to acquire items
+class Solution(object):
+    def minimumCost(self, cost1, cost2, costBoth, need1, need2):
+        a = need1 * cost1 + need2 * cost2
+
+        b = costBoth * max(need1, need2)
+
+        mn = min(need1, need2)
+
+        c = (mn * costBoth +
+             (need1 - mn) * cost1 +
+             (need2 - mn) * cost2)
+
+        return min(a, b, c)
