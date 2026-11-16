@@ -37,3 +37,27 @@ int minimumSumSubarray(int* nums, int numsSize, int l, int r) {
 
     return ans == INT_MAX ? -1 : ans;
 }
+
+//daily 16-11-26
+//digit sum of a string
+char* digitSum(char* s, int k) {
+    while (strlen(s) > k) {
+        char* result = malloc(strlen(s) * 4 + 1);
+        int pos = 0;
+
+        for (int i = 0; i < strlen(s); i += k) {
+            int sum = 0;
+
+            for (int j = i; j < i + k && s[j] != '\0'; j++) {
+                sum += s[j] - '0';
+            }
+
+            pos += sprintf(result + pos, "%d", sum);
+        }
+
+        result[pos] = '\0';
+        s = result;
+    }
+
+    return s;
+}
