@@ -479,3 +479,14 @@ class Solution(object):
                 word_to_char[word] = ch
 
         return True
+
+#minimum changes to make a string beautiful
+int minChanges(char* s) {
+    int count = 0;
+    for (int i = 0; s[i] != '\0'; i += 2) {
+        if (s[i] != s[i + 1]) {
+            count++;
+        }
+    }
+    return count;
+}
