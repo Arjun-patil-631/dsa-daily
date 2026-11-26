@@ -630,3 +630,9 @@ class Solution:
             row.append(1)
 
         return row
+
+#daily 26-11-26
+class Solution(object):
+    def canAliceWin(self, n):
+        k = int((21 - sqrt(441 - 8 * n)) / 2)
+        return k % 2 == 1
