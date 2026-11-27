@@ -636,3 +636,31 @@ class Solution(object):
     def canAliceWin(self, n):
         k = int((21 - sqrt(441 - 8 * n)) / 2)
         return k % 2 == 1
+
+#majority elementII
+class Solution(object):
+    def majorityElement(self, nums):
+        c1 = c2 = 0
+        n1 = n2 = None
+
+        for num in nums:
+            if num == n1:
+                c1 += 1
+            elif num == n2:
+                c2 += 1
+            elif c1 == 0:
+                n1 = num
+                c1 = 1
+            elif c2 == 0:
+                n2 = num
+                c2 = 1
+            else:
+                c1 -= 1
+                c2 -= 1
+
+        ans = []
+        for num in [n1, n2]:
+            if num is not None and nums.count(num) > len(nums) // 3:
+                ans.append(num)
+
+        return ans
